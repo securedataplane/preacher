@@ -1,0 +1,59 @@
+## clustered graph example from Derek Bruening's CGO 2005 talk
+#=cluster;1;2;4;6;8 
+## green instead of gray since not planning on printing this
+#colors=grey1,grey2,grey4,grey6,grey7
+#=table
+##yformat=%4.2f%
+#yformat=%g
+##max=100
+#=norotate
+#ylabel=Throughput(Trajectories/s)
+## stretch it out in x direction
+#xscale=.5
+##datascale=1000
+#legendx=right
+#legendy=center
+#bbfudge=-1.50
+#
+##          32  64  128
+##Threads	896.12201	1717.07668	2240.66795	2558.89762	1662.16622
+#Threads		909		1578	1876	2875	2541
+#
+# clustered graph example from Derek Bruening's CGO 2005 talk
+=cluster;1Core;2Core;4Core
+#=cluster;1;2;4;6;8 
+# green instead of gray since not planning on printing this
+colors=grey6,grey4,grey1
+#colors=grey1,grey2,grey4,grey6,grey7
+=table
+#yformat=%4.2f%
+yformat=%g
+#max=100
+=norotate
+ylabel=Throughput(Trajectories/s)
+xlabel=Threads
+# stretch it out in x direction
+xscale=.5
+#datascale=1000
+legendx=right
+legendy=center
+bbfudge=-1.50
+#=nolegend
+=nocommas
+
+#          32  64  128
+#Threads	838.79099	1291.49978	2578.43732	1916.24182	1640.4094727273
+#1Core		793		1022	1095	1110	1347
+#2Core		863		1156	1363	1458	1674
+#Default	1013	1701	1865	2898	2921
+1	793		863		1013
+2	1022	1156	1701
+4	1095	1363	1865
+6	1110	1458	2898
+8	1347	1674	2921
+#=table
+#1	909
+#2	1578
+#4	1876
+#6	2875
+#8	2541
