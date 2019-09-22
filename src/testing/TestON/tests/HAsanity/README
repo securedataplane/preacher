@@ -1,0 +1,18 @@
+This test is designed to verify that an ONOS cluster behaves correctly using
+all the same verifications as the other HA tests. There is no control plane
+failures in this test. This is so that it is easier to find the cause of bugs
+discovered through the HA suite.
+
+The gerneral structure for the test:
+- Startup
+- Assign switches
+- Verify ONOS state and functionality
+    - Device mastership
+    - Intents
+    - Leadership election
+    - Distributed Primitives
+- Wait 60 seconds
+- Verify ONOS state and functionality
+- Dataplane failures
+    - link down and up
+    - switch down and up

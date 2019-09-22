@@ -1,0 +1,107 @@
+<PARAMS>
+    # CASE - Descritpion
+    # 1 - Variable initialization and optional pull and build ONOS package
+    # 2 - Start fresh ONOS
+    # 32 - Start mininet with 2switch topology
+    # 35 - Start mininet with 5swtich topology
+    # 310 - Start mininet with 10swtich topology
+    # 36 - Ping hosts across network, h1 to h3
+    # 37 - Verify flows are in ONOS and Mininet
+    # 41 - Activate tsamp
+    # 42 - Deactivate tsamp
+    # 51 - Configure 1 detectors
+    # 52 - Configure 2 detectors
+    # 54 - Configure 4 detectors
+    # 56 - Configure 6 detectors
+    # 58 - Configure 8 detectors
+    # 61 - Enable Trajectory Sampling
+    # 62 - Disable Trajectory Sampling
+    # 71 - Configure fwd flowTimeout to 3600
+    # 79 - Set the log level to ERROR in ONOS
+    # 779 - Set the log level to INFO in ONOS
+    # 80 - Send traffic from h1 to h3 using tcpreplay
+    # 81 - tcpreplay traffic from h1 to h3 using 20packetsPath5Threads124.pcapng
+    # 82 - tcpreplay traffic from h1 to h3 using 20packetsPath5Threads124.pcapng
+    # 84 - tcpreplay traffic from h1 to h3 using 20packetsPath5Threads124.pcapng
+    # 86 - tcpreplay traffic from h1 to h3 using 12packetsPath5Threads6.pcapng
+    # 88 - tcpreplay traffic from h1 to h3 using 16packetsPath5Threads8.pcapng
+    # 101 - tcpreplay traffic from h1 to h3 using 40packetsPath10Threads124.pcapng
+    # 102 - tcpreplay traffic from h1 to h3 using 40packetsPath10Threads124.pcapng
+    # 104 - tcpreplay traffic from h1 to h3 using 40packetsPath10Threads124.pcapng
+    # 106 - tcpreplay traffic from h1 to h3 using 30packetsPath10Threads6.pcapng
+    # 108 - tcpreplay traffic from h1 to h3 using 40packetsPath10Threads8.pcapng
+    # 90 - Report Detection Statistics
+    # 100 - Report error/warning/exceptions
+
+    <testcases>1,2,35,71,79,36,37,41,51,61,81,779,62,90,42,79,41,52,61,82,779,62,90,42,79,41,54,61,84,779,62,90,42,79,41,56,61,86,779,62,90,42,79,41,58,61,88,779,62,90,42,79</testcases>
+    <testcasesNew>1,2,35,71,79,36,37,41,51,61,81,779,62,90,42,779</testcasesNew>
+    <testcasesPath10>1,2,310,71,36,37,41,51,61,101,62,42,90,2,71,36,37,41,52,61,102,62,51,42,90,2,71,36,37,41,54,61,104,62,51,42,90,2,71,36,37,41,56,61,106,62,51,42,90,2,71,36,37,41,58,61,108,62,51,42,90</testcasesPath10>
+    <testcasesPath5>1,2,35,71,36,37,41,51,61,81,62,42,90,2,71,36,37,41,52,61,82,62,51,42,90,2,71,36,37,41,54,61,84,62,51,42,90,2,71,36,37,41,56,61,86,62,51,42,90,2,71,36,37,41,58,61,88,62,51,42,90</testcasesPath5>
+    <testcasesz>1,2,35,71,36,37,41,51,61,81,62,42,90</testcasesz>
+    <testcasesy>1,90</testcasesy>
+    <testcasesx>1,2,35,71,36,37,41,51,61,81,62,42,90</testcasesx>
+    <testcasesTesting>1,35,71,36,37,81,82,84,86,88</testcasesTesting>
+    <testcase1detector>1,2,35,71,36,37,41,51,61,81,62,42,100</testcase1detector>
+    <testcases100>1,32,71,36,37,41,51,52,54,56,58,61,62,51,42,35,36,41,51,52,54,56,58,61,62,51,42</testcases100>
+
+    <SCALE>
+        <max>1</max>
+    </SCALE>
+
+    <DEBUG>on</DEBUG>
+
+    <DEPENDENCY>
+        <path>/tests/SATSperf/Dependency/</path>
+        <wrapper1>startUp</wrapper1>
+        <wrapper2>topo</wrapper2>
+        <topology1>2switch.py</topology1>
+        <topology2>5switch.py</topology2>
+        <topology3>10switch.py</topology3>
+        <thread124Pcap>20packetsPath5Threads124.pcapng</thread124Pcap>
+        <thread6Pcap>12packetsPath5Threads6.pcapng</thread6Pcap>
+        <thread8Pcap>16packetsPath5Threads8.pcapng</thread8Pcap>
+        <path10thread124Pcap>40packetsPath10Threads124.pcapng</path10thread124Pcap>
+        <path10thread6Pcap>30packetsPath10Threads6.pcapng</path10thread6Pcap>
+        <path10thread8Pcap>40packetsPath10Threads8.pcapng</path10thread8Pcap>
+    </DEPENDENCY>
+
+    <DETECTORS>1,2,4,6,8</DETECTORS>
+
+    <ENV>
+        <cellName>local</cellName>
+        <cellApps>drivers,openflow</cellApps>
+    </ENV>
+
+    <GIT>
+        <pull>False</pull>
+        <branch>master</branch>
+    </GIT>
+
+    <CTRL>
+        <port>6663</port>
+    </CTRL>
+
+    <TEST>
+        <vlan>10</vlan>
+        <mpls>22</mpls>
+        <tcpDst>40001</tcpDst>
+        <udpDst>40051</udpDst>
+        <ip4Type>2048</ip4Type>
+        <tcpProto>6</tcpProto>
+        <udpProto>17</udpProto>
+        <vlanType>33024</vlanType>
+        <mplsType>34887</mplsType>
+        <swDPID>of:0000000000000001</swDPID>
+    </TEST>
+
+    <SLEEP>
+        <startup>15</startup>
+        <startMN>5</startMN>
+        <addFlow>10</addFlow>
+        <delFlow>10</delFlow>
+        <activate>10</activate>
+        <deactivate>10</deactivate>
+        <tcpreplay>60</tcpreplay>
+    </SLEEP>
+
+</PARAMS>
