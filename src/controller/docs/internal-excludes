@@ -1,0 +1,7 @@
+org.onlab.jdvue*
+org.onlab.stc*
+org.onlab.thirdparty
+org.onosproject.oecfg
+org.onosproject.maven
+org.onosproject.grpc*
+protobuf.*

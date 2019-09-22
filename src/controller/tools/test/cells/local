@@ -1,0 +1,7 @@
+# Local VirtualBox-based ONOS instances 1,2 & ONOS mininet box
+
+export ONOS_NIC=127.0.0.*
+export OC1="127.0.0.1"
+export ONOS_USER="mininet"
+
+export ONOS_APPS="drivers,openflow,fwd,proxyarp,mobility"

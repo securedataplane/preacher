@@ -1,0 +1,37 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
+# Remotely pushes bits to a remote node in preparation for install.
+# -----------------------------------------------------------------------------
+function _usage () {
+cat << _EOF_
+usage:
+ $(basename $0) [node]
+
+options:
+- [node] : the target node to prime for installation
+
+summary:
+ Remotely pushes bits to a remote node in preparation for install.
+
+ $(basename $0) is invoked as part of 'onos-install', and shouldn't be
+ directly invoked for the most part.
+
+_EOF_
+}
+
+[ "$1" = "-h" ] && _usage && exit 0
+
+[ ! -d "$ONOS_ROOT" ] && echo "ONOS_ROOT is not defined" >&2 && exit 1
+. $ONOS_ROOT/tools/build/envDefaults
+
+node=${1:-$OCI}
+remote=$ONOS_USER@$node
+
+locHash=$(cksum $ONOS_TAR | cut -d' ' -f1,2)
+remHash=$(ssh $remote cksum $ONOS_TAR 2>/dev/null | cut -d' ' -f1,2)
+
+if [ "$locHash" = "$remHash" ]; then
+    echo "ONOS bits $ONOS_TAR already up-to-date on $node..."
+else
+    scp -q $ONOS_TAR $remote:/tmp
+fi
